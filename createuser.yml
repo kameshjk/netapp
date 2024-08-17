@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  name: Gather Facts
+  tasks:
+  - name: Create publickey
+    netapp.ontap.na_ontap_publickey:
+     state: present
+     account: ktkf676
+     public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCdqe+lLtd059I5qOrT+hI3cByJbv56EcKhlfzf/4kMa9UJuqzGO171yhtpnZEhXA+yQDfoiIZwLx0BJmdWU8ixXtr9MNxuegjcEHvsYVkWpj35KbDro6bb0x3f/OLWH235O2q4oR7D6yzy7LqlCoYDspob/5oprow88gBlw6lHxZrmeluJVn+U9pu8NmtfP/+9YtWsShskdRLt973nW9olvqa+RfKqeUm7LUbvneI7/wOm3FtnkbGt2r71UCOf+bLqLBAV5bSw74Pk636rCesRoeLRb939j3ezd8uUk6oP6QsUXD7UURnNG64dyZKNQ9QJXYyx3AHYj9Ncm0hZ6mI9 rsa-key-20240814"
+     vserver: semltst01
+     hostname: 172.20.161.153
+     username: "{{ username }}"
+     password: "{{ password }}"
+     https: true
+     validate_certs: false
+  - name: Print
+    debug:
+         var: ontap_facts 
+  vars_prompt:
+
+  - name: "username"
+    prompt: "Enter username"
+    private: false
+  - name: "password"
+    prompt: "Enter password"
+    private: true
+    confirm: true
