@@ -25,3 +25,4 @@
     prompt: "Enter password"
     private: true
     confirm: true
+---
