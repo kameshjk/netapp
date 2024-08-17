@@ -4,45 +4,21 @@
    - name: Create FlexVol
      netapp.ontap.na_ontap_volume:
      state: present
-     name: "{{ volumename }}"
+     name: "{{ morpheus ['customOptions']['jk_volname'] }}"
      is_infinite: False
-     aggregate_name: "{{ aggregatename }}"
-     size: "{{ size }}"
+     aggregate_name: "{{ morpheus ['customOptions']['jk_aggrname']  }}"
+     size: "{{ morpheus ['customOptions']['jk_size']  }}"
      size_unit: gb
      user_id: 1001
      group_id: 2002
      tiering_policy: auto
      export_policy: default
      percent_snapshot_space: 5
-     vserver: "{{ vserver }}"
+     vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
      wait_for_completion: True
      nvfail_enabled: False
-     comment: ansible created volume
-     hostname: "{{ host }}"
-     username: "{{ username }}"
-     password: "{{ password }}"
-    
-
-  vars_prompt:
-  - name: "host"
-    prompt: "Enter host"
-    private: false
-  - name: "username"
-    prompt: "Enter username"
-    private: false
-  - name: "password"
-    prompt: "Enter password"
-    private: true
-  - name: "volumename"
-    prompt: "Enter volume name"
-    private: false
-  - name: "size"
-    prompt: "Enter size in GB"
-    private: false
-  - name: "vserver"
-    prompt: "Enter vserver name"
-    private: false
-  - name: "aggregatename"
-    prompt: "Enter aggregate name"
-    private: false  
+     comment: "{{ morpheus ['customOptions']['jk_request']  }}"
+     hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+     username: "{{ morpheus ['customOptions']['jk_username']  }}"
+     password: "{{ morpheus ['customOptions']['jk_password']  }}"
   
