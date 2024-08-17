@@ -3,22 +3,22 @@
   tasks:  
    - name: Create FlexVol
      netapp.ontap.na_ontap_volume:
-     state: present
-     name: "{{ morpheus ['customOptions']['jk_volname'] }}"
-     is_infinite: False
-     aggregate_name: "{{ morpheus ['customOptions']['jk_aggrname']  }}"
-     size: "{{ morpheus ['customOptions']['jk_size']  }}"
-     size_unit: gb
-     user_id: 1001
-     group_id: 2002
-     tiering_policy: auto
-     export_policy: default
-     percent_snapshot_space: 5
-     vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
-     wait_for_completion: True
-     nvfail_enabled: False
-     comment: "{{ morpheus ['customOptions']['jk_request']  }}"
-     hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
-     username: "{{ morpheus ['customOptions']['jk_username']  }}"
-     password: "{{ morpheus ['customOptions']['jk_password']  }}"
+      state: present
+      name: "{{ morpheus ['customOptions']['jk_volname'] }}"
+      is_infinite: False
+      aggregate_name: "{{ morpheus ['customOptions']['jk_aggrname']  }}"
+      size: "{{ morpheus ['customOptions']['jk_size']  }}"
+      size_unit: gb
+      user_id: 1001
+      group_id: 2002
+      tiering_policy: auto
+      export_policy: default
+      percent_snapshot_space: 5
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      wait_for_completion: True
+      nvfail_enabled: False
+      comment: "{{ morpheus ['customOptions']['jk_request']  }}"
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
   
