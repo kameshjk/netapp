@@ -1,0 +1,45 @@
+---
+- hosts: localhost
+  name: Gather Facts
+  tasks:
+  - name: "Collect Info"
+    netapp.ontap.na_ontap_lun_map:
+      state: absent
+      hostname: "172.20.161.153"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      initiator_group_name: "{{ igroup }}"
+      path: "{{ path }}"
+      vserver: "{{ vserver }}"
+
+      https: true
+      validate_certs: false
+  - name: Print
+    debug:
+         var: ontap_facts 
+  vars_prompt:
+  - name: "vserver"
+    prompt: "Enter Vserver name"
+    private: false
+  - name: "path"
+    prompt: "Enter path"
+    private: false
+  - name: "igroup"
+    prompt: "Enter igroup name"
+    private: false
+  - name: "username"
+    prompt: "Enter username"
+    private: false
+  - name: "password"
+    prompt: "Enter password"
+    private: true
+    confirm: true
+
+  - name: Sending an e-mail
+  community.general.mail:
+    host: relay.astrazeneca.net
+    to: Thangakameshwaran Jayapaul <thangakameshwaran.jayapaul@astrazeneca.com>
+    subject: LUN UNMAP Report
+    body: Successfully Unmapped
+    
+   
