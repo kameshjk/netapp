@@ -1,9 +1,8 @@
 ---
 - hosts: localhost
   tasks:
-  
-  var:
-    input: "{{ morpheus ['customOptions']['jk_list'] }}"
+  vars:
+    list1: "{{ morpheus ['customOptions']['jk_list']  }}"
 
   - name: Print
     debug:
