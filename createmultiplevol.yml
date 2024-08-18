@@ -1,7 +1,8 @@
 ---
 - hosts: localhost
   tasks:
-  - name: Gather Facts
+  
+  var:
     input: "{{ morpheus ['customOptions']['jk_list'] }}"
 
   - name: Print
