@@ -3,7 +3,7 @@
   tasks:
   vars:
     list1: "{{ morpheus ['customOptions']['jk_list']  }}"
-
+  resigter: vol_list
   - name: Print
     debug:
-    msg: "{{ jk_list }}"
+    msg: "{{ item.name }}"
