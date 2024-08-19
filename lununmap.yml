@@ -8,8 +8,8 @@
       hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
       username: "{{ morpheus ['customOptions']['jk_username']  }}"
       password: "{{ morpheus ['customOptions']['jk_password']  }}"
-      initiator_group_name: "{{ morpheus ['customOptions']['jk_igroup]  }}"
-      path: "{{ morpheus ['customOptions']['jk_lunpath']  }}"
+      initiator_group_name: "{{ morpheus ['customOptions']['jk_igroup']  }}"
+      path: "{{ morpheus ['customOptions']['jk_lunpath'] }}"
       vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
       https: true
       validate_certs: false
