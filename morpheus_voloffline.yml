@@ -21,7 +21,6 @@
       is_online: False
       vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
       wait_for_completion: True
-      comment: "{{ morpheus ['customOptions']['jk_request']  }}"
       hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
       username: "{{ morpheus ['customOptions']['jk_username']  }}"
       password: "{{ morpheus ['customOptions']['jk_password']  }}"
