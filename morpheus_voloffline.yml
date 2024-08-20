@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  tasks:  
+   - name: Update comments before volume offline
+     netapp.ontap.na_ontap_volume:
+      state: present
+      name: "{{ morpheus ['customOptions']['jk_volname'] }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      wait_for_completion: True
+      comment: "{{ morpheus ['customOptions']['jk_request']  }}"
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+
+
+   - name: Volume offline
+     netapp.ontap.na_ontap_volume:
+      state: present
+      name: "{{ morpheus ['customOptions']['jk_volname'] }}"
+      is_infinite: False
+      is_online: False
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      wait_for_completion: True
+      comment: "{{ morpheus ['customOptions']['jk_request']  }}"
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+  
