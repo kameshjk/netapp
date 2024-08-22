@@ -5,10 +5,10 @@
   - name: "Create igroup"
     netapp.ontap.na_ontap_igroup:
       state: present
-      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
-      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      hostname: "{{ morpheus ['customOptions']['jk_cluster'] }}"
+      username: "{{ morpheus ['customOptions']['jk_username'] }}"
       password: "{{ morpheus ['customOptions']['jk_password']  }}"
-      name: "{{ morpheus ['customOptions']['jk_igroupname']  }}"
+      name: "{{ morpheus ['customOptions']['jk_igroupname'] }}"
       initiator_group_type: "{{ morpheus ['customOptions']['jk_igrouptype']  }}"
       os_type: "{{ morpheus ['customOptions']['jk_ostype']  }}"
       initiator_names: "{{ morpheus ['customOptions']['jk_initiator']  }}"
