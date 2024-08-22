@@ -13,5 +13,4 @@
       flexvol_name: "{{ morpheus ['customOptions']['jk_volname'] }}"
       https: true
       validate_certs: false
-      space_reserve: true
-  
+      
