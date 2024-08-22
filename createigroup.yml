@@ -2,19 +2,18 @@
 - hosts: localhost
   name: Gather Facts
   tasks:
-  - name: "Create Lun"
-    netapp.ontap.na_ontap_lun:
+  - name: "Create igroup"
+    netapp.ontap.na_ontap_igroup:
       state: present
       hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
       username: "{{ morpheus ['customOptions']['jk_username']  }}"
       password: "{{ morpheus ['customOptions']['jk_password']  }}"
-      name: "{{ morpheus ['customOptions']['jk_lunname']  }}"
-      vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
-      flexvol_name: "{{ morpheus ['customOptions']['jk_volname'] }}"
-      size: "{{ morpheus ['customOptions']['jk_size']  }}"
-      size_unit: gb
-      https: true
-      validate_certs: false
+      name: "{{ morpheus ['customOptions']['jk_igroupname']  }}"
+      initiator_group_type: "{{ morpheus ['customOptions']['jk_igrouptype']  }}"
       os_type: "{{ morpheus ['customOptions']['jk_ostype']  }}"
+      initiator_names: "{{ morpheus ['customOptions']['jk_initiator']  }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
+      validate_certs: false
       space_reserve: true
-  
+
+
