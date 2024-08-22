@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  name: Gather Facts
+  tasks:
+  - name: "Create Lun"
+    netapp.ontap.na_ontap_lun:
+      state: present
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+      name: "{{ morpheus ['customOptions']['jk_lunname']  }}"
+      path: "{{ morpheus ['customOptions']['jk_lunpath'] }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
+      flexvol_name: "{{ morpheus ['customOptions']['jk_volname'] }}"
+      size: 5
+      size_unit: gb
+      https: true
+      validate_certs: false
+      os_type: "{{ morpheus ['customOptions']['jk_ostype']  }}"
+      space_reserve: true
+  
