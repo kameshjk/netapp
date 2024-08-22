@@ -11,7 +11,7 @@
       name: "{{ morpheus ['customOptions']['jk_lunname']  }}"
       vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
       flexvol_name: "{{ morpheus ['customOptions']['jk_volname'] }}"
-      size: 5
+      size: 2
       size_unit: gb
       https: true
       validate_certs: false
