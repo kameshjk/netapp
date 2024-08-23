@@ -3,32 +3,32 @@
   tasks:  
 
    - name: Create Export Policy
-       netapp.ontap.na_ontap_export_policy:
-        state: present
-        name: "{{ morpheus ['customOptions']['jk_nfsclient']  }}"
-        vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
-        hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
-        username: "{{ morpheus ['customOptions']['jk_username']  }}"
-        password: "{{ morpheus ['customOptions']['jk_password']  }}"
+     netapp.ontap.na_ontap_export_policy:
+      state: present
+      name: "{{ morpheus ['customOptions']['jk_nfsclient']  }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
  
 
    - name: Create ExportPolicyRule
-      netapp.ontap.na_ontap_export_policy_rule:
-       state: present
-        name: "{{ morpheus ['customOptions']['jk_nfsclient']  }}"
-        rule_index: 100
-        vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
-        client_match: "{{ morpheus ['customOptions']['jk_clientmatch']  }}"
-        ro_rule: krb5,krb5i
-        rw_rule: any
-        protocol: nfs,nfs3
-        super_user_security: any
-        anonymous_user_id: 65534
-        allow_suid: true
-        ntfs_unix_security: ignore
-        hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
-        username: "{{ morpheus ['customOptions']['jk_username']  }}"
-        password: "{{ morpheus ['customOptions']['jk_password']  }}"
+     netapp.ontap.na_ontap_export_policy_rule:
+      state: present
+      name: "{{ morpheus ['customOptions']['jk_nfsclient']  }}"
+      rule_index: 100
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      client_match: "{{ morpheus ['customOptions']['jk_clientmatch']  }}"
+      ro_rule: krb5,krb5i
+      rw_rule: any
+      protocol: nfs,nfs3
+      super_user_security: any
+      anonymous_user_id: 65534
+      allow_suid: true
+      ntfs_unix_security: ignore
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
     
    - name: Create FlexVol
      netapp.ontap.na_ontap_volume:
