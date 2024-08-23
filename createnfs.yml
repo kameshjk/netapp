@@ -25,7 +25,7 @@
       super_user_security: any
       anonymous_user_id: 65534
       allow_suid: true
-      ntfs_unix_security: ignore
+      #ntfs_unix_security: ignore
       hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
       username: "{{ morpheus ['customOptions']['jk_username']  }}"
       password: "{{ morpheus ['customOptions']['jk_password']  }}"
