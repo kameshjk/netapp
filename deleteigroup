@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  name: Gather Facts
+  tasks:
+  - name: "Delete igroup"
+    netapp.ontap.na_ontap_igroup:
+      state: absent
+      hostname: "{{ morpheus ['customOptions']['jk_cluster'] }}"
+      username: "{{ morpheus ['customOptions']['jk_username'] }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+      name: "{{ morpheus ['customOptions']['jk_igroupname'] }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
+      validate_certs: false
+    
+
+
