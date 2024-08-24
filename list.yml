@@ -3,5 +3,7 @@
   name: Gather Facts
   tasks:
   - name: "list test"
-      list1: "{{ morpheus ['customOptions']['jk_list']  }}"
+    with_items:
+      - "{{ morpheus ['customOptions']['jk_list']  }}" 
+      
   
