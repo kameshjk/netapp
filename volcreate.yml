@@ -21,4 +21,14 @@
       hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
       username: "{{ morpheus ['customOptions']['jk_username']  }}"
       password: "{{ morpheus ['customOptions']['jk_password']  }}"
+     register: volcreate 
+
+    - name: Sending an e-mail
+    community.general.mail:
+     host: relay.astrazeneca.net
+     port: 25
+     from: thangakameshwaran.jayapaul@astrazeneca.com
+     to: thangakameshwaran.jayapaul@astrazeneca.com
+     subject: "{{ansible_play_name}} has completed"
+     body: "Here are the results {{ volcreate}}"
   
