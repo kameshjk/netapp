@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  name: Gather Facts
+  tasks:
+  - name: "list test"
+      list1: "{{ morpheus ['customOptions']['jk_list']  }}"
+  
