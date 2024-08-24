@@ -9,4 +9,4 @@
      to: thangakameshwaran.jayapaul@astrazeneca.com
      subject: Ansible-report
      body: System has been successfully provisioned.
-     delegate_to: localhost
+    delegate_to: localhost
