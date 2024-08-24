@@ -1,8 +1,9 @@
 ---
 - hosts: localhost
-  name: Gather Facts
   tasks:
-  with_items:
+   - name: "handling list"
+     tst = {{item}}
+     with_items: 
       - "{{ morpheus ['customOptions']['jk_list']  }}" 
       
   
