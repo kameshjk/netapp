@@ -1,0 +1,62 @@
+---
+- hosts: localhost
+  tasks:  
+   - name: Create FlexVol
+     netapp.ontap.na_ontap_volume:
+      state: present
+      name: "{{ morpheus ['customOptions']['jk_volname'] }}"
+      is_infinite: False
+      aggregate_name: "{{ morpheus ['customOptions']['jk_aggrname']  }}"
+      size: "{{ morpheus ['customOptions']['jk_size']  }}"
+      size_unit: gb
+      user_id: 1001
+      group_id: 2002
+      tiering_policy: auto
+      export_policy: default
+      percent_snapshot_space: 5
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      wait_for_completion: True
+      nvfail_enabled: False
+      comment: "{{ morpheus ['customOptions']['jk_request']  }}"
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+   - name: "Create igroup"
+     netapp.ontap.na_ontap_igroup:
+      state: present
+      hostname: "{{ morpheus ['customOptions']['jk_cluster'] }}"
+      username: "{{ morpheus ['customOptions']['jk_username'] }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+      name: "{{ morpheus ['customOptions']['jk_igroupname'] }}"
+      initiator_group_type: "{{ morpheus ['customOptions']['jk_igrouptype']  }}"
+      os_type: "{{ morpheus ['customOptions']['jk_ostype']  }}"
+      initiator_names: "{{ morpheus ['customOptions']['jk_initiator']  }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
+      validate_certs: false
+   - name: "Create Lun"
+     netapp.ontap.na_ontap_lun:
+      state: present
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+      name: "{{ morpheus ['customOptions']['jk_lunname']  }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver'] }}"
+      flexvol_name: "{{ morpheus ['customOptions']['jk_volname'] }}"
+      size: "{{ morpheus ['customOptions']['jk_size']  }}"
+      size_unit: gb
+      https: true
+      validate_certs: false
+      os_type: "{{ morpheus ['customOptions']['jk_ostype']  }}"
+      space_reserve: true
+   - name: "Mapping a lun"
+     netapp.ontap.na_ontap_lun_map:
+      state: present
+      hostname: "{{ morpheus ['customOptions']['jk_cluster']  }}"
+      username: "{{ morpheus ['customOptions']['jk_username']  }}"
+      password: "{{ morpheus ['customOptions']['jk_password']  }}"
+      initiator_group_name: "{{ morpheus ['customOptions']['jk_igroup']  }}"
+      path: "{{ morpheus ['customOptions']['jk_lunpath'] }}"
+      vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
+      https: true
+      validate_certs: false   
+  
