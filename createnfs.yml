@@ -43,6 +43,7 @@
       tiering_policy: auto
       export_policy: "{{ morpheus ['customOptions']['jk_nfsclient']  }}"
       percent_snapshot_space: 5
+      junction_path: "/{{ morpheus ['customOptions']['jk_volname'] }}"
       vserver: "{{ morpheus ['customOptions']['jk_vserver']  }}"
       wait_for_completion: True
       nvfail_enabled: False
